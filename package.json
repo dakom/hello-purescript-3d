@@ -1,0 +1,85 @@
+{
+  "name": "hello-purescript-3d",
+  "version": "0.0.1-alpha",
+  "description": "Hello Purescript 3d",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf ./dist && rimraf ./output",
+    "prep": "npm-run-all clean psc:build",
+    "test": "jest",
+    "build": "npm run prep && cross-env NODE_ENV=production webpack --progress --config webpack.prod.js",
+    "psc:build": "pulp --psc-package build",
+    "dev:auto-reload": "npm run prep && npm-run-all -p _devserver:auto-reload",
+    "dev:public:auto-reload": "npm run prep && npm-run-all -p _devserver:auto-reload:public",
+    "_devserver": "cross-env NODE_ENV=dev webpack-dev-server --progress --open --config webpack.dev.js",
+    "_devserver:public": "cross-env NODE_ENV=dev BROADCAST=true webpack-dev-server --host 0.0.0.0 --progress --open --config webpack.dev.js",
+    "_devserver:auto-reload": "cross-env NODE_ENV=dev-auto-reload webpack-dev-server --progress --open --config webpack.dev.js",
+    "_devserver:auto-reload:public": "cross-env NODE_ENV=dev-auto-reload BROADCAST=true webpack-dev-server --host 0.0.0.0 --progress --open --config webpack.dev.js",
+    "dist:server": "http-server ./dist -o"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "modulePaths": [
+      "<rootDir>/src/app/",
+      "<rootDir>/src/"
+    ]
+  },
+  "author": "David Komer",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "23.3.0",
+    "@types/node": "10.5.2",
+    "chokidar": "2.0.4",
+    "clean-webpack-plugin": "0.1.19",
+    "cors": "^2.8.4",
+    "cross-env": "5.2.0",
+    "css-loader": "1.0.0",
+    "express": "^4.16.3",
+    "fast-sass-loader": "1.4.5",
+    "fork-ts-checker-webpack-plugin": "0.4.3",
+    "glob": "7.1.2",
+    "hoek": "^5.0.3",
+    "html-loader": "0.5.5",
+    "html-webpack-plugin": "3.2.0",
+    "install": "^0.12.1",
+    "jest": "23.4.1",
+    "node-sass": "4.9.2",
+    "npm": "^6.2.0",
+    "npm-run-all": "4.1.3",
+    "null-loader": "0.1.1",
+    "raw-loader": "0.5.1",
+    "rimraf": "2.6.2",
+    "serve-index": "^1.9.1",
+    "shelljs": "0.8.2",
+    "source-map-loader": "0.2.3",
+    "style-loader": "0.21.0",
+    "ts-jest": "23.0.1",
+    "ts-loader": "4.4.2",
+    "ts-node": "7.0.0",
+    "ts-shader-loader": "1.0.5",
+    "tsconfig-paths": "3.4.2",
+    "typescript": "2.9.2",
+    "uglify-js": "3.4.5",
+    "uglifyjs-webpack-plugin": "1.2.7",
+    "webpack": "4.16.2",
+    "webpack-cli": "3.1.0",
+    "webpack-dev-server": "3.1.5",
+    "webpack-merge": "4.1.3",
+    "worker-loader": "2.0.0"
+  },
+  "dependencies": {
+    "fluture": "8.0.2",
+    "pure3d": "^1.0.2",
+    "sanctuary": "^0.15.0"
+  }
+}
