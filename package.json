@@ -7,7 +7,7 @@
     "clean": "rimraf ./dist && rimraf ./output",
     "prep": "npm-run-all clean psc:build",
     "test": "jest",
-    "build": "npm run prep && cross-env NODE_ENV=production webpack --progress --config webpack.prod.js",
+    "build": "npm run prep && cross-env NODE_ENV=production webpack --progress --config webpack.prod.js && cp -R ./src/webpage/static ./dist/ && cp ./src/webpage/_redirects ./dist/",
     "psc:build": "pulp --psc-package build",
     "dev:auto-reload": "npm run prep && npm-run-all -p _devserver:auto-reload",
     "dev:public:auto-reload": "npm run prep && npm-run-all -p _devserver:auto-reload:public",
