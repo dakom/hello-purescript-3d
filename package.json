@@ -38,7 +38,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "23.3.0",
-    "@types/node": "10.5.2",
+    "@types/node": "10.5.3",
     "chokidar": "2.0.4",
     "clean-webpack-plugin": "0.1.19",
     "cors": "^2.8.4",
@@ -78,8 +78,9 @@
     "worker-loader": "2.0.0"
   },
   "dependencies": {
-    "fluture": "8.0.2",
-    "pure3d": "^1.0.2",
+    "fluture": "9.0.0",
+    "partial.lenses": "^13.16.0",
+    "pure3d": "^1.2.0",
     "sanctuary": "^0.15.0"
   }
 }
